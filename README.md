@@ -1,6 +1,6 @@
 # Make Change Project
 
-###By Alexis Low
+## By Alexis Low
 ### 9/29/2017
 
 First week project for Skill Distillery
