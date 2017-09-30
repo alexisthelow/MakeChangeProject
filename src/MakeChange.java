@@ -49,7 +49,22 @@ public class MakeChange {
 	
 	public static void findChange(double price, double paid) {
 		//display number of bills and coins in change if tendered was greater than price
-		System.out.println(paid - price);
+		int changeDue = (int)(paid - price) * 100;
+		System.out.println((paid - price) + " due in change.");
+		System.out.println("Please give the customer: ");
+		//20's
+		if ((changeDue / 2000) > 0) {
+			System.out.println((changeDue / 2000) + " 20 dollar bills; ");
+			changeDue = changeDue % 2000;
+		}
+			
+		//10's
+		//5's
+		//1's
+		//.25's
+		//.10's
+		//.05's
+		//.01's
 	}
 
 }
