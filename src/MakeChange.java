@@ -41,7 +41,7 @@ public class MakeChange {
 				System.out.println(paid + " accepted. Remaining balance is " + (price - paid) + "."); //display message if not enough or exact amount tendered.
 			} else {//otherwise, display the change due
 				int changeDue = ((int)((paid * 100) - (price * 100))); //figure out the change due in pennies
-				System.out.println((double)(changeDue * 0.01) + " due in change.");
+				System.out.println((((double)(changeDue)) / 100) + " due in change.");
 				findChange(changeDue);
 			}
 		} while (price > paid); //keep going until customer has paid at least an amount equal to the price
@@ -49,7 +49,7 @@ public class MakeChange {
 		scanner.close();
 	}
 	
-	public static void findChange(int changeDue) {
+	public static void findChange(int changeDue) { //takes amount of change due in pennies and displays change due in each denomination
 		//display number of bills and coins in change if tendered was greater than price
 		System.out.println("Please give the customer: ");
 		//20's
