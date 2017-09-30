@@ -37,34 +37,60 @@ public class MakeChange {
 					System.out.println("You didn't enter a valid amount. Please try again.");
 				}
 			} while (!paidEntry); //keep going until priceFlag is true
-			if (price >= paid) {
+			if (price >= paid) {//if they didn't pay enough, say so
 				System.out.println(paid + " accepted. Remaining balance is " + (price - paid) + "."); //display message if not enough or exact amount tendered.
-			} else {
-				findChange(price, paid);
+			} else {//otherwise, display the change due
+				int changeDue = ((int)((paid * 100) - (price * 100))); //figure out the change due in pennies
+				System.out.println((double)(changeDue * 0.01) + " due in change.");
+				findChange(changeDue);
 			}
 		} while (price > paid); //keep going until customer has paid at least an amount equal to the price
 		
 		scanner.close();
 	}
 	
-	public static void findChange(double price, double paid) {
+	public static void findChange(int changeDue) {
 		//display number of bills and coins in change if tendered was greater than price
-		int changeDue = (int)(paid - price) * 100;
-		System.out.println((paid - price) + " due in change.");
 		System.out.println("Please give the customer: ");
 		//20's
 		if ((changeDue / 2000) > 0) {
-			System.out.println((changeDue / 2000) + " 20 dollar bills; ");
+			System.out.println((changeDue / 2000) + " 20 dollar bills ");
 			changeDue = changeDue % 2000;
 		}
-			
 		//10's
+		if ((changeDue / 1000) > 0) {
+			System.out.println((changeDue / 1000) + " 10 dollar bills ");
+			changeDue = changeDue % 1000;
+		}
 		//5's
+		if ((changeDue / 500) > 0) {
+			System.out.println((changeDue / 500) + " 5 dollar bills ");
+			changeDue = changeDue % 500;
+		}
 		//1's
+		if ((changeDue / 100) > 0) {
+			System.out.println((changeDue / 100) + " 1 dollar bills ");
+			changeDue = changeDue % 100;
+		}
 		//.25's
+		if ((changeDue / 25) > 0) {
+			System.out.println((changeDue / 25) + " quarters ");
+			changeDue = changeDue % 25;
+		}
 		//.10's
+		if ((changeDue / 10) > 0) {
+			System.out.println((changeDue / 10) + " dimes ");
+			changeDue = changeDue % 10;
+		}
 		//.05's
+		if ((changeDue / 5) > 0) {
+			System.out.println((changeDue / 5) + " nickels ");
+			changeDue = changeDue % 5;
+		}
 		//.01's
+		if ((changeDue / 1) > 0) {
+			System.out.println((changeDue / 1) + " pennies ");
+			changeDue = changeDue % 2000;
+		}
 	}
-
 }
