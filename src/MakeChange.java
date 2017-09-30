@@ -54,43 +54,77 @@ public class MakeChange {
 		System.out.println("Please give the customer: ");
 		//20's
 		if ((changeDue / 2000) > 0) {
-			System.out.println((changeDue / 2000) + " 20 dollar bills ");
+			System.out.print((changeDue / 2000) + " 20 dollar bill");
+			if ((changeDue / 2000) > 1) {
+				System.out.print("s");
+			}
+			System.out.println();
 			changeDue = changeDue % 2000;
 		}
 		//10's
 		if ((changeDue / 1000) > 0) {
-			System.out.println((changeDue / 1000) + " 10 dollar bills ");
+			System.out.print((changeDue / 1000) + " 10 dollar bill");
+			if ((changeDue / 1000) > 1) {
+				System.out.print("s");
+			}
+			System.out.println();
 			changeDue = changeDue % 1000;
 		}
 		//5's
 		if ((changeDue / 500) > 0) {
-			System.out.println((changeDue / 500) + " 5 dollar bills ");
+			System.out.print((changeDue / 500) + " 5 dollar bill");
+			if ((changeDue / 500) > 1) {
+				System.out.print("s");
+			}
+			System.out.println();
 			changeDue = changeDue % 500;
 		}
 		//1's
 		if ((changeDue / 100) > 0) {
-			System.out.println((changeDue / 100) + " 1 dollar bills ");
+			System.out.print((changeDue / 100) + " 1 dollar bill");
+			if ((changeDue / 100) > 1) {
+				System.out.print("s");
+			}
+			System.out.println();
 			changeDue = changeDue % 100;
 		}
 		//.25's
 		if ((changeDue / 25) > 0) {
-			System.out.println((changeDue / 25) + " quarters ");
+			System.out.print((changeDue / 25) + " quarter");
+			if ((changeDue / 25) > 1) {
+				System.out.print("s");
+			}
+			System.out.println();
 			changeDue = changeDue % 25;
 		}
 		//.10's
 		if ((changeDue / 10) > 0) {
-			System.out.println((changeDue / 10) + " dimes ");
+			System.out.print((changeDue / 10) + " dime");
+			if ((changeDue / 10) > 1) {
+				System.out.print("s");
+			}
+			System.out.println();
 			changeDue = changeDue % 10;
 		}
 		//.05's
 		if ((changeDue / 5) > 0) {
-			System.out.println((changeDue / 5) + " nickels ");
+			System.out.print((changeDue / 5) + " nickel");
+			if ((changeDue / 5) > 1) {
+				System.out.print("s");
+			}
+			System.out.println();
 			changeDue = changeDue % 5;
 		}
 		//.01's
 		if ((changeDue / 1) > 0) {
-			System.out.println((changeDue / 1) + " pennies ");
-			changeDue = changeDue % 2000;
+			System.out.print((changeDue / 1) + " penn");
+			if ((changeDue / 1) > 1) {
+				System.out.println("ies");
+			}
+			else {
+				System.out.println("y");
+			}
+			changeDue = changeDue % 1;
 		}
 	}
 }
