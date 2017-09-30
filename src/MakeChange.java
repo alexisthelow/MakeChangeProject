@@ -37,6 +37,9 @@ public class MakeChange {
 					System.out.println("You didn't enter a valid amount. Please try again.");
 				}
 			} while (!paidEntry); //keep going until priceFlag is true
+			if (price > paid) {
+				System.out.println(paid + " accepted. Remaining balance is " + (price - paid));
+			}
 		} while (price > paid); //keep going until customer has paid at least an amount equal to the price
 		//display message if tendered was less than or equal to price
 		//display number of bills and coins in change if tendered was greater than price
