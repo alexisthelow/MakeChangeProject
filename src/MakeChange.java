@@ -3,19 +3,18 @@ import java.text.DecimalFormat;
 
 public class MakeChange {
 	public static DecimalFormat money = new DecimalFormat("$0.00");
-	//TODO fix changeDue zeroing out when repeating
-	//TODO check negative number entry
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		//declare variables needed in scope
+
 		double price = 0.0;
 		double paid = 0.0;
 		double tendered = 0.0;
 		int changeDue = 0;
+		char again;
 		
 		//ask user for price of item
-		char again;
 		boolean againIsValidEntry;
 		do {
 			again = '0';
@@ -29,6 +28,9 @@ public class MakeChange {
 					if (!decimalCheck(price)) { //check to see if the entry is longer than expected
 						System.out.println("Invalid entry. " + price + " has too many decimal places.");
 						priceEntry = false; //return false if so and tell user
+					} else if (!(price > 0)) {
+						System.out.println("Invalid entry. You must enter a price greater than zero.");
+						priceEntry = false;
 					}
 				}
 				else {
@@ -37,6 +39,7 @@ public class MakeChange {
 				}
 			} while (!priceEntry); //keep going until priceFlag is true
 			System.out.println(money.format(price) + " due.");
+			
 			//ask how much money was tendered by customer
 			boolean paidEntry;
 			do {
@@ -49,6 +52,10 @@ public class MakeChange {
 						if (!decimalCheck(tendered)) { //check to see if tendered is longer than expected
 							System.out.println("Invalid entry. " + tendered + " has too many decimal places.");
 							paidEntry = false; //set paid flag to false and tell user
+						}
+						else if (!(tendered > 0)) {
+							System.out.println("Invalid entry. Tendered amount must be greater than zero.");
+							paidEntry = false;
 						}
 						else {
 							paid += tendered; //add tendered to paid
@@ -67,7 +74,7 @@ public class MakeChange {
 					findChange(changeDue);
 				}
 			} while (price > paid); //keep going until customer has paid at least an amount equal to the price
-			System.out.print("Start a new transaction? (y/n): ");
+			System.out.print("Start a new transaction? (y/n): "); //ask if they wanna go again
 			
 			do {
 				if (scanner.hasNext()) {
