@@ -3,16 +3,16 @@ import java.text.DecimalFormat;
 
 public class MakeChange {
 	public static DecimalFormat money = new DecimalFormat("$0.00");
-//TODO add transaction repeat
-//TODO accept only two decimal places in tender and price
-//TODO truncate display of decimal places if paid < price
-//TODO add 100's and 50's + remind user to mark w/ counterfeit pen
+	//TODO fix changeDue zeroing out when repeating
+	//TODO check negative number entry
+	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		//declare variables needed in scope
 		double price = 0.0;
 		double paid = 0.0;
 		double tendered = 0.0;
+		int changeDue = 0;
 		
 		//ask user for price of item
 		char again;
@@ -62,7 +62,7 @@ public class MakeChange {
 				if (price >= paid) {//if they didn't pay enough, say so
 					System.out.println(money.format(paid) + " accepted. Remaining balance is " + money.format((price - paid)) + "."); //display message if not enough or exact amount tendered.
 				} else {//otherwise, display the change due
-					int changeDue = ((int)((paid * 100) - (price * 100))); //figure out the change due in pennies
+					changeDue = ((int)((paid * 100) - (price * 100))); //figure out the change due in pennies
 					System.out.println((money.format(((double)(changeDue)) * 0.01)) + " due in change.");
 					findChange(changeDue);
 				}
@@ -80,6 +80,11 @@ public class MakeChange {
 				}
 				else {
 					againIsValidEntry = true;
+					changeDue = 0;
+					price = 0;
+					paid = 0;
+					tendered = 0;
+
 				}
 			} while(!againIsValidEntry);
 		} while (again == 'y' || again == 'Y');
